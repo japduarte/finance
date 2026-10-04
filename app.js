@@ -2,6 +2,8 @@
 const STORAGE_KEY = "financas-pwa-data-v1";
 const euro = new Intl.NumberFormat("pt-PT", { style: "currency", currency: "EUR" });
 const state = { page: "transfers", month: currentMonth(), open: null, editingRule: null };
+const buildVersion = () => window.APP_VERSION || "local";
+document.title = `Finanças em ordem · ${buildVersion()}`;
 
 function currentMonth() { return new Date().toISOString().slice(0, 7); }
 function uid(prefix) { return `${prefix}-${crypto.randomUUID?.() || Date.now().toString(36)}`; }
@@ -58,7 +60,7 @@ function transferPage() {
   const plannedTotal = groups.filter((g)=>execFor(g).status !== "skipped").reduce((a,g)=>a+(execFor(g).actualAmountCents ?? g.plannedAmountCents),0);
   const totalIncome = tr().people.reduce((sum,p)=>sum+(incomes()[p.id]||0),0);
   const each = tr().people.map((p)=>{const planned=groups.filter(g=>g.personId===p.id&&execFor(g).status!=="skipped").reduce((a,g)=>a+(execFor(g).actualAmountCents ?? g.plannedAmountCents),0);return {p, amount:pending.filter(g=>g.personId===p.id).reduce((a,g)=>a+g.plannedAmountCents,0), remaining:(incomes()[p.id]||0)-planned};});
-  return `<header class="top"><div><p class="eyebrow">Planeamento mensal</p><h1>Transferências</h1></div><button class="icon-button" data-action="sync" aria-label="Sincronizar">↻</button></header>
+  return `<header class="top"><div><p class="eyebrow">Planeamento mensal</p><h1>Transferências</h1></div><div class="top-actions"><span class="build-version" title="Versão publicada">${buildVersion()}</span><button class="icon-button" data-action="sync" aria-label="Sincronizar">↻</button></div></header>
   <div class="month-picker"><button class="icon-button" data-month="-1">‹</button><strong>${monthLabel(state.month)}</strong><button class="icon-button" data-month="1">›</button></div>
   <section class="summary"><div class="summary-heading"><div><small>Por transferir</small><div class="summary-value">${money(total)}</div><small>${pending.length} movimento${pending.length===1?"":"s"} pendente${pending.length===1?"":"s"}</small></div><button class="summary-edit" data-action="edit-income">Rendimentos</button></div><div class="summary-grid"><div><small>Disponível após transferências</small><div class="summary-value">${money(totalIncome-plannedTotal)}</div><small>Rendimento mensal: ${money(totalIncome)}</small></div><div class="person-totals">${each.map(({p,remaining})=>`<div class="person-total"><span>${p.name}</span><strong>${money(remaining)}</strong></div>`).join("")}</div></div></section>
   <div class="section-title"><h2>Por fazer</h2><span class="muted">${pending.length}</span></div>${pending.length ? pending.map((g)=>card(g)).join("") : `<div class="empty-card">Tudo tratado neste mês.</div>`}

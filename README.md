@@ -14,6 +14,12 @@ python -m http.server 4173
 
 Abra `http://localhost:4173` no browser.
 
+## Publicação e versão
+
+O ficheiro `.github/workflows/deploy-pages.yml` publica automaticamente a PWA em GitHub Pages em cada *push* para `main`. Antes da primeira publicação, no repositório GitHub abra **Settings → Pages** e selecione **Source: GitHub Actions**.
+
+Em cada publicação, o título do browser e o canto superior direito da PWA mostram os primeiros sete caracteres do commit (por exemplo, `a1b2c3d`). Assim é possível confirmar exatamente a versão que está aberta. Localmente, o identificador mostrado é `local`.
+
 ## Google Drive
 
 Para sincronizar, é necessário criar um OAuth Client ID Google do tipo **Web application**. A primeira sincronização cria `financas-pwa.json` no Drive.
