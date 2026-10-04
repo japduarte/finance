@@ -1,0 +1,20 @@
+# Dados pessoais e ficheiros de trabalho locais
+orca_v5.xlsx
+~$*.xlsx
+financas-pwa.json
+bens.json
+*.backup.json
+*.local.json
+
+# Configuração local e credenciais
+.env
+.env.*
+!.env.example
+
+# Ficheiros do sistema/editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+
+ESPECIFICACAO_FUNC*
