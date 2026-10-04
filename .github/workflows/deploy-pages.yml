@@ -26,7 +26,7 @@ jobs:
       - name: Preparar publicação
         run: |
           mkdir site
-          cp index.html app.js styles.css manifest.webmanifest icon.svg sw.js site/
+          cp index.html app.js patrimonio.js styles.css manifest.webmanifest icon.svg sw.js site/
           printf 'window.APP_VERSION = "%s";\n' "${GITHUB_SHA::7}" > site/version.js
           sed -i "s/__BUILD_VERSION__/${GITHUB_SHA::7}/" site/sw.js
 

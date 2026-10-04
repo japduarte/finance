@@ -2,6 +2,7 @@
 orca_v5.xlsx
 ~$*.xlsx
 financas-pwa.json
+patrimonio-pwa.json
 bens.json
 *.backup.json
 *.local.json
