@@ -14,6 +14,7 @@ dialog { width:min(100% - 24px,520px); border:0; border-radius:18px; padding:0; 
 .patrimony-close { background:#215f97; }
 .patrimony-debt { color:#215f97; background:#e8f2fa; } .patrimony-warning { background:#e8f2fa; color:#285f8d; }
 .patrimony-missing { max-height:92px; overflow:auto; margin-bottom:14px; background:#e8f2fa; color:#285f8d; }
+.patrimony-prior { background:#eef6fc; color:#285f8d; }
 .variation { color:#38795a; font-weight:700; } .variation.negative { color:#b34a3b; } .variation.positive { color:#2871aa; }
 .transfers-warning { background:#edf2e9; color:#385144; }
 .app-shell:has(.settings-head) .settings-head .eyebrow { color:#5d6368; } .app-shell:has(.settings-head) .help { background:#eeeeee; color:#53585c; } .app-shell:has(.settings-head) .small-button { color:#53585c; background:#ededed; }
