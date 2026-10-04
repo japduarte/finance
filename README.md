@@ -28,7 +28,7 @@ Para sincronizar, é necessário criar um OAuth Client ID Google do tipo **Web a
 6. Crie o cliente e copie apenas o **Client ID** (termina em `.apps.googleusercontent.com`). Não é necessário, nem seguro, colocar o *Client secret* na PWA.
 7. Na PWA, abra **Dados → Configurar**, cole o Client ID e deixe o ID do ficheiro vazio. Ao usar o botão de sincronização, autorize a conta Google: a app cria o ficheiro `financas-pwa.json` no Drive.
 
-Noutro telemóvel, configure o mesmo Client ID e indique o ID de `financas-pwa.json` (visível no URL do ficheiro no Drive) antes de escolher **Carregar do Drive**.
+Noutro telemóvel, configure o mesmo Client ID e cole o URL completo de `financas-pwa.json` (ou apenas o ID visível nesse URL) antes de escolher **Carregar do Drive**. O nome `financas-pwa.json`, por si só, não é um ID válido para a Drive API.
 
 As origens JavaScript autorizadas identificam os domínios a partir dos quais a app pode pedir acesso ao Google. A Drive API tem de estar ativada no mesmo projeto Google Cloud. Consulte a documentação oficial sobre [clientes OAuth Web](https://developers.google.com/identity/sign-in/web/server-side-flow) e [ativação da Drive API](https://developers.google.com/workspace/drive/api/quickstart/js).
 
